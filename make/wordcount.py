@@ -24,13 +24,13 @@ occurrence. TRANSLATE_TABLE is used first to replace DELIMITERS with
 spaces before the string is broken into words. The function is
 case-insensitive.
 """
-def get_frequencies(text):
+def get_frequencies(text, min_length = 6):
   text = text.translate(TRANSLATE_TABLE)
   words = text.split()
   frequencies = {}
   for word in words:
     word = word.lower().strip()
-    if len(word) == 0:
+    if len(word) < min_length:
       continue
     if word in frequencies:
       frequencies[word] += 1
