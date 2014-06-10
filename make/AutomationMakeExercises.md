@@ -4,50 +4,46 @@ Automation and Make Exercises
 Exercise 1 - add a rule 
 -----------------------
 
-Add in a rule for `methane.pdb.data`, based on the rules for
-`cubane.pdb.data` and `ethane.pdb.dat`.
+Add in a rule for `bridge.dat`, based on the rules for `war.dat` and
+`jekyll.dat`.
 
 Be sure to use a single tab when indenting the actions, not spaces!
 
-`touch` all the *.pdb files.
+`touch` all the *.txt files.
 
-Re-run `make` and all the `.pdb.data` files should be rebuilt.
+Re-run `make` and all the `.dat` files should be rebuilt.
 
 Exercise 2 - simplify a rule 
 ----------------------------
 
-Simplify the `awk` rule using automatic variables:
+Simplify the rule of the `%.dat` target using automatic variables:
 
 * `$@` is the target of the current rule.
-* `$^` is the dependencies of the current rule.
+* `$<` is the first dependency only.
 
-Using `$@` and `$^` in the right places would seem to work.
+Exercise 3 - use a macro
+------------------------
 
-Try this, re-run `make` and observe the results.
+Replace occurrences of `wordcount.py` with the macro-name,
+`$(PROCESSOR)`.
 
-Exercise 3 - gzip the files
----------------------------
+Exercise 4 - add another processing stage
+-----------------------------------------
 
-Add a rule to package up and compress each `.pdb.data` file into 
-its own `gz` file (e.g. cubane.`pdb.data.gz`).
+`plotcount.py` contains a Python script that plots data in the
+two-column `.dat` files e.g.
 
-The syntax of `gz` is:
+    python plotcount.py -show war.dat
+    python plotcount.py -show kim.dat
+    python plotcount.py -show bridge.dat
 
-    gzip -c <file to gzip> <gzipped file>
+If given a `-save` flag and another file name it can save the plot
+as a `.jpg` e.g.
 
-Change the `PDBAnalysis.tar.gz` rule to package up the `gz` files.
+    python plotcount.py -save war.dat war.jpg
 
-Try running it without creating the `gz` files manually first.
+Extend the Makefile:
 
-You'll need to remove a `*.pdb.data.gz` file
-
-    rm \*.pdb.data.gz
-
-Create the gzip files manually, by running make each time, 
-then re-run `make` to make `PDBAnalysis.tar.gz`.
-
-Exercise 4 - create a macro
----------------------------
-
-Add a new macro to make the name of the file `PDBAnalysis.tar.gz`
-configurable.
+* Add a rule to create `.jpg` files from `.dat` files, using wild-cards.
+* Modify the `analysis.tar.gz` rule to add the `.jpg` files to the `.gz` file.
+* Use a macro to hold the script name `plotcount.py`.
