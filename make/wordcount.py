@@ -3,8 +3,7 @@
 import string
 import sys
 
-DELIMITERS = ".,;:?$@^<>#%`!*-=()[]{}/\"\'"
-TRANSLATE_TABLE = string.maketrans(DELIMITERS, len(DELIMITERS) * " ")
+DELIMITERS = [".", ",", ";", ":", "?", "$", "@", "^", "<", ">", "#", "%", "`", "!", "*", "-", "=", "(", ")", "[", "]", "{", "}", "/", "\"", "\'"]
 
 """
 Read lines from a plain-text file and return these concatenated
@@ -25,7 +24,8 @@ spaces before the string is broken into words. The function is
 case-insensitive.
 """
 def get_frequencies(text, min_length = 6):
-  text = text.translate(TRANSLATE_TABLE)
+  for purge in DELIMITERS:
+    text = text.replace(purge, " ")
   words = text.split()
   frequencies = {}
   for word in words:
@@ -53,7 +53,6 @@ def print_pairs(pairs):
   for (a,b) in pairs:
     print a, b
 
-
 """
 Read in a file, calculate the frequencies of each word in the file and
 print the words and frequences in descending order.
@@ -64,9 +63,5 @@ def word_count(file):
   sorted_frequencies = sorted(frequencies.iteritems(), key=lambda (key,value): value, reverse=True)
   print_pairs(sorted_frequencies)
 
-if len(sys.argv) > 1:
-  file=sys.argv[1]
-  word_count(file)
-else:
-  print "Usage: wordcount.py FILE"
-  exit()
+file=sys.argv[1]
+word_count(file)
