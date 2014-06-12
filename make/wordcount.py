@@ -47,22 +47,7 @@ def get_frequencies(lines, min_length = DEFAULT_MIN_LENGTH):
   return frequencies
 
 """
-Print the contents of the given dictionary, one key value per line.
-"""
-def print_dictionary(dict):
-  for key in dict:
-    print key, dict[key]
-
-"""
-Print the contents of a list of pairs (a,b) one pair per line in the
-form "a b"
-"""
-def print_pairs(pairs):
-  for (a,b) in pairs:
-    print a, b
-
-"""
-Print the contents of a list of pairs (a,b) one pair per line in the
+Save the contents of a list of pairs (a,b) one pair per line in the
 form "a b" to a file.
 """
 def save_pairs(file, pairs):
