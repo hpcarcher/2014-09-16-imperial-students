@@ -8,14 +8,14 @@ import sys
 from wordcount import load_word_counts
 
 """
-Given a list of (word, count) tuples, plot these as a histogram. Only
-the first limit tuples are plotted.
+Given a list of (word, count, percentage) tuples, plot the counts as a
+histogram. Only the first limit tuples are plotted.
 """
 def plot_word_counts(counts, limit = 10):
   plt.title("Word Counts")
   limited_counts = counts[0:limit]
-  word_data = [word for (word, count) in limited_counts]
-  count_data = [count for (word, count) in limited_counts]
+  word_data = [word for (word, _, _) in limited_counts]
+  count_data = [count for (_, count, _) in limited_counts]
   position = np.arange(len(word_data))
   width = 1.0
   ax = plt.axes()

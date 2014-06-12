@@ -16,18 +16,19 @@ def load_text(file):
   return lines
 
 """
-Save a list of (word, count) tuples to a file, in the form "word
-count", one tuple per line.
+Save a list of [word, count, percentage] lists to a file, in the form
+"word count percentage", one tuple per line.
 """
 def save_word_counts(file, counts):
   f = open(file, 'w')
-  for (word, count) in counts:
-    f.write("%s %d\n" % (word, count))
+  for count in counts:
+    f.write("%s\n" % " ".join(map(str, count)))
   f.close()
 
 """
-Load a list of (word, count) tuples from a file where each line is of 
-the form "word count". Lines starting with # are ignored.
+Load a list of (word, count, percentage) tuples from a file where each
+line is of the form "word count percentage". Lines starting with # are
+ignored.
 """
 def load_word_counts(file):
   counts = []
@@ -35,7 +36,7 @@ def load_word_counts(file):
   for line in f:
     if (not line.startswith("#")):
       fields = line.split()
-      counts.append((fields[0], int(fields[1])))
+      counts.append((fields[0], int(fields[1]), float(fields[2])))
   f.close()
   return counts
 
@@ -90,16 +91,29 @@ def filter_word_counts(counts, min_length = 1):
   return stripped
 
 """
+Given a list of (word, count) tuples, create a new list (word, count,
+percentage) where percentage is the percentage number of occurrences
+of this word compared to the total number of words.
+"""
+def calculate_percentages(counts):
+  total = sum([tuple[1] for tuple in counts])
+  tuples = [(word, count, (float(count) / total) * 100.0) 
+    for (word, count) in counts]
+  return tuples
+
+"""
 Load a file, calculate the frequencies of each word in the file and
-save in a new file the words and frequences in descending order. Only
-words whose length is >= min_length are included.
+save in a new file the words, counts and percentages of the total  in
+descending order. Only words whose length is >= min_length are
+included.
 """
 def word_count(input_file, output_file, min_length = 1):
   lines = load_text(input_file)
   counts = calculate_word_counts(lines)
   sorted_counts = word_count_dict_to_tuples(counts)
   sorted_counts = filter_word_counts(sorted_counts, min_length)
-  save_word_counts(output_file, sorted_counts)
+  percentage_counts = calculate_percentages(sorted_counts)
+  save_word_counts(output_file, percentage_counts)
 
 if  __name__ =='__main__':
   input_file = sys.argv[1]
