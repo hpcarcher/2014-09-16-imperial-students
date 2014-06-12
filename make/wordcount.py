@@ -3,11 +3,10 @@
 import string
 import sys
 
-DEFAULT_MIN_LENGTH = 6
 DELIMITERS = [".", ",", ";", ":", "?", "$", "@", "^", "<", ">", "#", "%", "`", "!", "*", "-", "=", "(", ")", "[", "]", "{", "}", "/", "\"", "\'"]
 
 """
-Read lines from a plain-text file and return these as a list, with
+Load lines from a plain-text file and return these as a list, with
 trailing newlines stripped.
 """
 def load_text(file):
@@ -17,59 +16,95 @@ def load_text(file):
   return lines
 
 """
-Given a string, update a dictionary of words and their frequency of
-occurrence. DELIMITERS are removed before the string is broken into
-words. The function is case-insensitive. Words with length less than
-min_length are omitted.
+Save a list of (word, count) tuples to a file, in the form "word
+count", one tuple per line.
 """
-def add_frequencies(line, frequencies, min_length = DEFAULT_MIN_LENGTH):
+def save_word_counts(file, counts):
+  f = open(file, 'w')
+  for (word, count) in counts:
+    f.write("%s %d\n" % (word, count))
+  f.close()
+
+"""
+Load a list of (word, count) tuples from a file where each line is of 
+the form "word count". Lines starting with # are ignored.
+"""
+def load_word_counts(file):
+  counts = []
+  f = open(file, "r")
+  for line in f:
+    if (not line.startswith("#")):
+      fields = line.split()
+      counts.append((fields[0], int(fields[1])))
+  f.close()
+  return counts
+
+"""
+Given a string, parse the string and update a dictionary of word
+counts (mapping words to counts of their frequencies). DELIMITERS are
+removed before the string is parsed. The function is case-insensitive
+and words in the dictionary are in lower-case.
+"""
+def update_word_counts(line, counts):
   for purge in DELIMITERS:
     line = line.replace(purge, " ")
   words = line.split()
   for word in words:
     word = word.lower().strip()
-    if len(word) < min_length:
-      continue
-    if word in frequencies:
-      frequencies[word] += 1
+    if word in counts:
+      counts[word] += 1
     else:
-      frequencies[word] = 1
+      counts[word] = 1
 
 """
-Given a list of strings, return a dictionary of words and their frequency of  
-occurrence. The function is case-insensitive. Words with length less
-than min_length are omitted.
+Given a list of strings, parse each string and create a dictionary of
+word counts (mapping words to counts of their frequencies). DELIMITERS
+are removed before the string is parsed. The function is
+case-insensitive and words in the dictionary are in lower-case.
 """
-def get_frequencies(lines, min_length = DEFAULT_MIN_LENGTH):
-  frequencies = {}
+def calculate_word_counts(lines):
+  counts = {}
   for line in lines:
-    add_frequencies(line, frequencies, min_length)
-  return frequencies
+    update_word_counts(line, counts)
+  return counts
 
 """
-Save the contents of a list of pairs (a,b) one pair per line in the
-form "a b" to a file.
+Given a dictionary of word counts (mapping words to counts of their
+frequencies), convert this into an ordered list of tuples (word,
+count). The list is ordered by decreasing count, unless increase is
+True.
 """
-def save_pairs(file, pairs):
-  f = open(file, 'w')
-  for (a,b) in pairs:
-    f.write("%s %d\n" % (a, b))
-  f.close()
+def word_count_dict_to_tuples(counts, decrease = True):
+  return sorted(counts.iteritems(), key=lambda (key,value): value, \
+    reverse = decrease)
 
 """
-Read in a file, calculate the frequencies of each word in the file and
-save in a new file the words and frequences in descending order.
+Given a list of (word, count) tuples, create a new list with only
+those tuples whose word is >= min_length.
 """
-def word_count(input_file, output_file, min_length):
-  text = load_text(input_file)
-  frequencies = get_frequencies(text, min_length) 
-  sorted_frequencies = sorted(frequencies.iteritems(), key=lambda (key,value): value, reverse=True)
-  save_pairs(output_file, sorted_frequencies)
+def filter_word_counts(counts, min_length = 1):
+  stripped = []
+  for (word, count) in counts:
+    if (len(word) >= min_length):
+      stripped.append((word, count))
+  return stripped
+
+"""
+Load a file, calculate the frequencies of each word in the file and
+save in a new file the words and frequences in descending order. Only
+words whose length is >= min_length are included.
+"""
+def word_count(input_file, output_file, min_length = 1):
+  lines = load_text(input_file)
+  counts = calculate_word_counts(lines)
+  sorted_counts = word_count_dict_to_tuples(counts)
+  sorted_counts = filter_word_counts(sorted_counts, min_length)
+  save_word_counts(output_file, sorted_counts)
 
 if  __name__ =='__main__':
-  input_file=sys.argv[1]
-  output_file=sys.argv[2]
-  limit = DEFAULT_MIN_LENGTH
+  input_file = sys.argv[1]
+  output_file = sys.argv[2]
+  min_length = 1
   if (len(sys.argv) > 3):
-    limit = int(sys.argv[3])
-  word_count(input_file, output_file, limit)
+    min_length = int(sys.argv[3])
+  word_count(input_file, output_file, min_length)
