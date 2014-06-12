@@ -66,9 +66,10 @@ def word_count(input_file, output_file, min_length):
   sorted_frequencies = sorted(frequencies.iteritems(), key=lambda (key,value): value, reverse=True)
   save_pairs(output_file, sorted_frequencies)
 
-input_file=sys.argv[1]
-output_file=sys.argv[2]
-limit = DEFAULT_MIN_LENGTH
-if (len(sys.argv) > 3):
-  limit = int(sys.argv[3])
-word_count(input_file, output_file, limit)
+if  __name__ =='__main__':
+  input_file=sys.argv[1]
+  output_file=sys.argv[2]
+  limit = DEFAULT_MIN_LENGTH
+  if (len(sys.argv) > 3):
+    limit = int(sys.argv[3])
+  word_count(input_file, output_file, limit)

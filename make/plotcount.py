@@ -58,14 +58,15 @@ def show_usage():
   print "Usage: plotcount.py [-show|-save] FILE [SAVEFILE]"
   exit()
 
-if len(sys.argv) < 3:
-  show_usage()
-  exit()
-command = sys.argv[1]
-if (command == "-show"):
-  plot_and_show_frequencies(sys.argv[2])
-elif (command == "-save") and (len(sys.argv) >= 4):
-  plot_and_save_frequencies(sys.argv[2], sys.argv[3])
-else:
-  show_usage()
-  exit()
+if  __name__ =='__main__':
+  if len(sys.argv) < 3:
+    show_usage()
+    exit()
+  command = sys.argv[1]
+  if (command == "-show"):
+    plot_and_show_frequencies(sys.argv[2])
+  elif (command == "-save") and (len(sys.argv) >= 4):
+    plot_and_save_frequencies(sys.argv[2], sys.argv[3])
+  else:
+    show_usage()
+    exit()
