@@ -96,7 +96,9 @@ percentage) where percentage is the percentage number of occurrences
 of this word compared to the total number of words.
 """
 def calculate_percentages(counts):
-  total = sum([tuple[1] for tuple in counts])
+  total = 0
+  for count in counts:
+    total += count[1]
   tuples = [(word, count, (float(count) / total) * 100.0) 
     for (word, count) in counts]
   return tuples
