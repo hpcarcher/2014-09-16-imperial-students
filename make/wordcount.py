@@ -3,31 +3,29 @@
 import string
 import sys
 
+DEFAULT_MIN_LENGTH = 6
 DELIMITERS = [".", ",", ";", ":", "?", "$", "@", "^", "<", ">", "#", "%", "`", "!", "*", "-", "=", "(", ")", "[", "]", "{", "}", "/", "\"", "\'"]
 
 """
-Read lines from a plain-text file and return these concatenated
-together in a single string.
+Read lines from a plain-text file and return these as a list, with
+trailing newlines stripped.
 """
-def get_text_from_file(file):
+def load_text(file):
   text = ""
-  f = open(file, "r")
-  for line in f:
-    text += line
-  f.close()
-  return text
+  with open(file) as f:
+    lines = f.read().splitlines()
+  return lines
 
 """
-Given a string, return a dictionary of words and their frequency of
-occurrence. TRANSLATE_TABLE is used first to replace DELIMITERS with
-spaces before the string is broken into words. The function is
-case-insensitive.
+Given a string, update a dictionary of words and their frequency of
+occurrence. DELIMITERS are removed before the string is broken into
+words. The function is case-insensitive. Words with length less than
+min_length are omitted.
 """
-def get_frequencies(text, min_length = 6):
+def add_frequencies(line, frequencies, min_length = DEFAULT_MIN_LENGTH):
   for purge in DELIMITERS:
-    text = text.replace(purge, " ")
-  words = text.split()
-  frequencies = {}
+    line = line.replace(purge, " ")
+  words = line.split()
   for word in words:
     word = word.lower().strip()
     if len(word) < min_length:
@@ -36,6 +34,16 @@ def get_frequencies(text, min_length = 6):
       frequencies[word] += 1
     else:
       frequencies[word] = 1
+
+"""
+Given a list of strings, return a dictionary of words and their frequency of  
+occurrence. The function is case-insensitive. Words with length less
+than min_length are omitted.
+"""
+def get_frequencies(lines, min_length = DEFAULT_MIN_LENGTH):
+  frequencies = {}
+  for line in lines:
+    add_frequencies(line, frequencies, min_length)
   return frequencies
 
 """
@@ -54,14 +62,28 @@ def print_pairs(pairs):
     print a, b
 
 """
-Read in a file, calculate the frequencies of each word in the file and
-print the words and frequences in descending order.
+Print the contents of a list of pairs (a,b) one pair per line in the
+form "a b" to a file.
 """
-def word_count(file):
-  text = get_text_from_file(file)
-  frequencies = get_frequencies(text) 
-  sorted_frequencies = sorted(frequencies.iteritems(), key=lambda (key,value): value, reverse=True)
-  print_pairs(sorted_frequencies)
+def save_pairs(file, pairs):
+  f = open(file, 'w')
+  for (a,b) in pairs:
+    f.write("%s %d\n" % (a, b))
+  f.close()
 
-file=sys.argv[1]
-word_count(file)
+"""
+Read in a file, calculate the frequencies of each word in the file and
+save in a new file the words and frequences in descending order.
+"""
+def word_count(input_file, output_file, min_length):
+  text = load_text(input_file)
+  frequencies = get_frequencies(text, min_length) 
+  sorted_frequencies = sorted(frequencies.iteritems(), key=lambda (key,value): value, reverse=True)
+  save_pairs(output_file, sorted_frequencies)
+
+input_file=sys.argv[1]
+output_file=sys.argv[2]
+limit = DEFAULT_MIN_LENGTH
+if (len(sys.argv) > 3):
+  limit = int(sys.argv[3])
+word_count(input_file, output_file, limit)
