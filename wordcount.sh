@@ -12,12 +12,10 @@
 # Dr. Drang, More shell, less egg, December 4th, 2011.,
 # http://www.leancrew.com/all-this/2011/12/more-shell-less-egg/ 
 
-tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q
-
 # tr -cs A-Za-z '\n'
 # Translate all characters that are not A-Z or a-z to '\n'.
-# -c use the complement of A-Za-z '\n'.
-# -s squeeze together repeated occurrences of '\n' with a single '\n'.
+# -c complement.
+# -s squeeze together duplicates.
 
 # tr A-Z a-z
 # Translate all characters that are A-Z to a-z.
@@ -26,9 +24,9 @@ tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q
 # Sort standard input and write to standard output.
 
 # uniq -c 
-# Filter adjacent matching lines from standard input writing to
+# Filter adjacent matching lines from standard input and write to
 # standard output.
-# -c prefix lines by the number of occurrences
+# -c prefix lines by the number of occurrences.
 
 # sort -rn 
 # Sort standard input and write to standard output.
@@ -39,3 +37,4 @@ tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q
 # Run stream editor and take first argument to shell script, N,
 # and slice from stream then quit.
 
+tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${1}q
