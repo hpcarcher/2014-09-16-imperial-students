@@ -20,30 +20,33 @@ def main(argv):
 
     # Test we have the correct number of arguments
     if len(argv) < 2:
-        print "Usage: cfd.py <config file> <dat file>"
+        print "Usage: cfd.py <config file> <dat file> [quiet]"
         sys.exit(1)
 
-    config_file = sys.argv[1]
-    dat_file = sys.argv[2]
+    # Get command-line arguments.
+    config_file = argv[0]
+    dat_file = argv[1]
+    quiet = (len(argv) == 3) and (argv[2] == "quiet")
 
+    # Read and parse configuration file.
     config = ConfigParser.RawConfigParser()
     config.read(config_file)
-
     niter = config.getint('Simulation', 'iterations')
     edge = config.getint('Grid', 'edge')
     inlet_x = config.getint('Inlet', 'x')
     inlet_width = config.getint('Inlet', 'width')
     outlet_y = config.getint('Outlet', 'y')
     outlet_height = config.getint('Outlet', 'height')
-    
-    sys.stdout.write("\n2D CFD Simulation\n")
-    sys.stdout.write("=================\n")
-    sys.stdout.write("   Iterations = {0}\n".format(niter))
-    sys.stdout.write("         Edge = {0}\n".format(edge))
-    sys.stdout.write("      Inlet X = {0}\n".format(inlet_x))
-    sys.stdout.write("  Inlet width = {0}\n".format(inlet_width))
-    sys.stdout.write("     Outlet Y = {0}\n".format(outlet_y))
-    sys.stdout.write("Outlet height = {0}\n".format(outlet_height))
+
+    if (not quiet):
+	sys.stdout.write("\n2D CFD Simulation\n")
+	sys.stdout.write("=================\n")
+	sys.stdout.write("   Iterations = {0}\n".format(niter))
+	sys.stdout.write("         Edge = {0}\n".format(edge))
+	sys.stdout.write("      Inlet X = {0}\n".format(inlet_x))
+	sys.stdout.write("  Inlet width = {0}\n".format(inlet_width))
+	sys.stdout.write("     Outlet Y = {0}\n".format(outlet_y))
+	sys.stdout.write("Outlet height = {0}\n".format(outlet_height))
 
     # Time the initialisation
     tstart = time.time()
@@ -68,16 +71,19 @@ def main(argv):
     
     # Write the simulation details
     tend = time.time()
-    sys.stdout.write("\nInitialisation took {0:.5f}s\n".format(tend-tstart))
-    sys.stdout.write("\nGrid size = {0} x {1}\n".format(m, n))
+    if (not quiet):
+	sys.stdout.write("\nInitialisation took {0:.5f}s\n".format(tend-tstart))
+	sys.stdout.write("\nGrid size = {0} x {1}\n".format(m, n))
     
     # Call the Jacobi iterative loop (and calculate timings)
-    sys.stdout.write("\nStarting main Jacobi loop...\n")
+    if (not quiet):
+	sys.stdout.write("\nStarting main Jacobi loop...\n")
     tstart = time.time()
     jacobi(niter, psi)
     tend = time.time()
-    sys.stdout.write("...finished\n")
-    sys.stdout.write("\nCalculation took {0:.5f}s\n\n".format(tend-tstart))
+    if (not quiet):
+	sys.stdout.write("...finished\n")
+	sys.stdout.write("\nCalculation took {0:.5f}s\n\n".format(tend-tstart))
     
     # Write the output file
     write_data(m, n, psi, dat_file)
