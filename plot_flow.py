@@ -16,8 +16,13 @@ def main(argv):
     # Open the input file
     input = open(infile, "r")
 
+    # Skip header comments until first non-comment line is reached.
+    reading_header = True
+    while (reading_header):
+	line = input.readline()
+	reading_header = line.startswith('#')
+    
     # Read the dimensions of the simulation
-    line = input.readline()
     line = line.rstrip()
     tokens = line.split()
     m = int(tokens[0])
