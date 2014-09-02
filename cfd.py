@@ -28,6 +28,10 @@ def main(argv):
     dat_file = argv[1]
     quiet = (len(argv) == 3) and (argv[2] == "quiet")
 
+    cfd(config_file, dat_file, quiet)
+
+def cfd(config_file, dat_file, quiet=True):
+
     # Read and parse configuration file.
     config = ConfigParser.RawConfigParser()
     config.read(config_file)
@@ -57,18 +61,11 @@ def main(argv):
 
     # Define the psi array and set it to zero
     psi = [[0 for col in range(m+2)] for row in range(n+2)]
-    
-    # Set the boundary conditions on top edge
-    for i in range(inlet_x+1, inlet_x+inlet_width):
-        psi[0][i] = float(i-inlet_x)
-    for i in range(inlet_x+inlet_width, m+1):
-        psi[0][i] = float(inlet_width)
-    # Set the boundary conditions on right edge
-    for j in range(1, outlet_y+1):
-        psi[j][m+1] = float(outlet_height)
-    for j in range(outlet_y+1, outlet_y+outlet_height):
-        psi[j][m+1] = float(outlet_height-j+outlet_y)
-    
+
+    # Set the boundary conditions
+    set_inlet_boundaries(psi, m, inlet_x, inlet_width)
+    set_outlet_boundaries(psi, m, outlet_y, outlet_height)
+
     # Write the simulation details
     tend = time.time()
     if (not quiet):
@@ -90,6 +87,22 @@ def main(argv):
 
     # Finish nicely
     sys.exit(0)
+
+# Set the boundary conditions on top edge
+def set_inlet_boundaries(psi, m, inlet_x, inlet_width):
+
+    for i in range(inlet_x+1, inlet_x+inlet_width):
+        psi[0][i] = float(i-inlet_x)
+    for i in range(inlet_x+inlet_width, m+1):
+        psi[0][i] = float(inlet_width)
+
+# Set the boundary conditions on right edge
+def set_outlet_boundaries(psi, m, outlet_y, outlet_height):
+
+    for j in range(1, outlet_y+1):
+        psi[j][m+1] = float(outlet_height)
+    for j in range(outlet_y+1, outlet_y+outlet_height):
+        psi[j][m+1] = float(outlet_height-j+outlet_y)
 
 # Create a plot of the data using matplotlib
 def write_data(m, n, psi, outfile):
