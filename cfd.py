@@ -40,54 +40,45 @@ def main(argv):
 
     config_parser = ConfigParser.RawConfigParser()
     config_parser.read(config_file)
-    config = config_parser_to_dict(config_parser)
+    iterations = config_parser.getint('Simulation', 'iterations')
+    edge = config_parser.getint('Grid', 'edge')
+    inlet_x = config_parser.getint('Inlet', 'x')
+    inlet_width = config_parser.getint('Inlet', 'width')
+    outlet_y = config_parser.getint('Outlet', 'y')
+    outlet_height = config_parser.getint('Outlet', 'height')
 
-    cfd(config, dat_file, quiet)
+    cfd(iterations, edge, inlet_x, inlet_width, outlet_y, outlet_height, dat_file, quiet)
 
     sys.exit(0)
 
 
-def config_parser_to_dict(config_parser):
-    """
-    Extract configuration from a ConfigParser object and return
-    as a dictionary.
-
-    Keyword arguments:
-    config_parser -- ConfigParser object.
-    """
-
-    config = {}
-    config['iterations'] = config_parser.getint('Simulation', 'iterations')
-    config['edge'] = config_parser.getint('Grid', 'edge')
-    config['inlet_x'] = config_parser.getint('Inlet', 'x')
-    config['inlet_width'] = config_parser.getint('Inlet', 'width')
-    config['outlet_y'] = config_parser.getint('Outlet', 'y')
-    config['outlet_height'] = config_parser.getint('Outlet', 'height')
-    return config
-
-
-def cfd(config, dat_file, quiet=True):
+def cfd(iterations, edge, inlet_x, inlet_width, outlet_y, outlet_height, dat_file, quiet=True):
     """
     Run simulation and output stream function data into a file.
 
     Keyword arguments:
-    config -- dictionary with configuration information.
+    iterations -- number of iterations to update stream function over.
+    edge -- width and height of box.
+    inlet_x -- point on top edge of box where inlet begins.
+    inlet_width -- inlet width.
+    inlet_y -- point on right edge where outlet begins.
+    inlet_height -- outlet height.
     dat_file -- stream function data output file name.
     quiet -- if True then no status information is printed.
     """
 
-    width = config['edge']
-    height = config['edge']
-
+    width = edge
+    height = edge
+    
     if (not quiet):
 	sys.stdout.write("\n2D CFD Simulation\n")
 	sys.stdout.write("=================\n")
-	sys.stdout.write("   Iterations = {0}\n".format(config['iterations']))
-	sys.stdout.write("         Edge = {0}\n".format(config['edge']))
-	sys.stdout.write("      Inlet X = {0}\n".format(config['inlet_x']))
-	sys.stdout.write("  Inlet width = {0}\n".format(config['inlet_width']))
-	sys.stdout.write("     Outlet Y = {0}\n".format(config['outlet_y']))
-	sys.stdout.write("Outlet height = {0}\n".format(config['outlet_height']))
+	sys.stdout.write("   Iterations = {0}\n".format(iterations))
+	sys.stdout.write("         Edge = {0}\n".format(edge))
+	sys.stdout.write("      Inlet X = {0}\n".format(inlet_x))
+	sys.stdout.write("  Inlet width = {0}\n".format(inlet_width))
+	sys.stdout.write("     Outlet Y = {0}\n".format(outlet_y))
+	sys.stdout.write("Outlet height = {0}\n".format(outlet_height))
 	sys.stdout.write("Grid size     = {0} x {1}\n".format(width, height))
     time_starts = time.time()
 
@@ -95,8 +86,8 @@ def cfd(config, dat_file, quiet=True):
     psi = [[0 for col in range(width+2)] for row in range(height+2)]
 
     # Set the boundary conditions.
-    set_inlet_boundary(psi, width, config['inlet_x'], config['inlet_width'])
-    set_outlet_boundary(psi, width, config['outlet_y'], config['outlet_height'])
+    set_inlet_boundary(psi, width, inlet_x, inlet_width)
+    set_outlet_boundary(psi, width, outlet_y, outlet_height)
 
     time_ends = time.time()
     if (not quiet):
@@ -107,7 +98,7 @@ def cfd(config, dat_file, quiet=True):
 	sys.stdout.write("\nStarting main Jacobi loop...\n")
     time_starts = time.time()
 
-    jacobi(config['iterations'], psi)
+    jacobi(iterations, psi)
 
     time_ends = time.time()
     if (not quiet):
