@@ -16,15 +16,13 @@ def jacobi(num_iterations, psi):
     # Get the box dimensions.
     height = len(psi) - 2
     width = len(psi[0]) - 2
-    
-    tmp = [[0 for col in range(width+2)] for row in range(height+2)]
 
     iteration = 0
     while iteration < num_iterations:
-	update_stream_function(width, height, psi, tmp)
+	update_stream_function(width, height, psi)
 	iteration += 1
 
-def update_stream_function(width, height, psi, tmp):
+def update_stream_function(width, height, psi):
     """
     Update stream function over a single iteration.
 
@@ -32,9 +30,9 @@ def update_stream_function(width, height, psi, tmp):
     width -- box width.
     height -- box height.
     psi -- 2D array of stream function values.
-    tmp -- 2D array of temporary stream function values.
     """
-
+    
+    tmp = [[0 for col in range(width+2)] for row in range(height+2)]
     # Calculate updated stream function into tmp.
     i = 1
     while i < height + 1:
