@@ -1,128 +1,183 @@
 #!/usr/bin/env python
-#
-# CFD Calculation
-# ===============
-#
-# Simulation of flow in a 2D box using the Jacobi algorithm.
-#
-# Basic Python version - uses lists
-#
-# EPCC, 2014
+
+"""
+Computational Fluid Dynamics calculation.
+
+Simulation of flow in a 2D square box using the Jacobi algorithm. The
+box has an inlet on its top edge and an outlet on its right edge.
+
+Written by EPCC 2014.
+"""
 
 import sys
 import time
 import ConfigParser
 
-# Import the external jacobi function from "jacobi.py"
 from jacobi import jacobi
 
 def main(argv):
+    """
+    Read configuration file, run simulation and output stream function
+    data into a file.
 
-    # Test we have the correct number of arguments
+    Usage: cfd.py <config file> <output file> [quiet]
+
+    If quiet flag is provided then no status information is printed.
+
+    Keyword arguments:
+    argv -- list of command-line arguments. This must have, at least,
+            two elements, the configuration file name and stream
+	    function data output file name.
+    """
+
     if len(argv) < 2:
-        print "Usage: cfd.py <config file> <dat file> [quiet]"
+        print "Usage: cfd.py <config file> <output file> [quiet]"
         sys.exit(1)
 
-    # Get command-line arguments.
     config_file = argv[0]
     dat_file = argv[1]
     quiet = (len(argv) == 3) and (argv[2] == "quiet")
 
-    cfd(config_file, dat_file, quiet)
+    config_parser = ConfigParser.RawConfigParser()
+    config_parser.read(config_file)
+    config = config_parser_to_dict(config_parser)
 
-def cfd(config_file, dat_file, quiet=True):
+    cfd(config, dat_file, quiet)
 
-    # Read and parse configuration file.
-    config = ConfigParser.RawConfigParser()
-    config.read(config_file)
-    niter = config.getint('Simulation', 'iterations')
-    edge = config.getint('Grid', 'edge')
-    inlet_x = config.getint('Inlet', 'x')
-    inlet_width = config.getint('Inlet', 'width')
-    outlet_y = config.getint('Outlet', 'y')
-    outlet_height = config.getint('Outlet', 'height')
+    sys.exit(0)
+
+
+def config_parser_to_dict(config_parser):
+    """
+    Extract configuration from a ConfigParser object and return
+    as a dictionary.
+
+    Keyword arguments:
+    config_parser -- ConfigParser object.
+    """
+
+    config = {}
+    config['iterations'] = config_parser.getint('Simulation', 'iterations')
+    config['edge'] = config_parser.getint('Grid', 'edge')
+    config['inlet_x'] = config_parser.getint('Inlet', 'x')
+    config['inlet_width'] = config_parser.getint('Inlet', 'width')
+    config['outlet_y'] = config_parser.getint('Outlet', 'y')
+    config['outlet_height'] = config_parser.getint('Outlet', 'height')
+    return config
+
+
+def cfd(config, dat_file, quiet=True):
+    """
+    Run simulation and output stream function data into a file.
+
+    Keyword arguments:
+    config -- dictionary with configuration information.
+    dat_file -- stream function data output file name.
+    quiet -- if True then no status information is printed.
+    """
+
+    width = config['edge']
+    height = config['edge']
 
     if (not quiet):
 	sys.stdout.write("\n2D CFD Simulation\n")
 	sys.stdout.write("=================\n")
-	sys.stdout.write("   Iterations = {0}\n".format(niter))
-	sys.stdout.write("         Edge = {0}\n".format(edge))
-	sys.stdout.write("      Inlet X = {0}\n".format(inlet_x))
-	sys.stdout.write("  Inlet width = {0}\n".format(inlet_width))
-	sys.stdout.write("     Outlet Y = {0}\n".format(outlet_y))
-	sys.stdout.write("Outlet height = {0}\n".format(outlet_height))
+	sys.stdout.write("   Iterations = {0}\n".format(config['iterations']))
+	sys.stdout.write("         Edge = {0}\n".format(config['edge']))
+	sys.stdout.write("      Inlet X = {0}\n".format(config['inlet_x']))
+	sys.stdout.write("  Inlet width = {0}\n".format(config['inlet_width']))
+	sys.stdout.write("     Outlet Y = {0}\n".format(config['outlet_y']))
+	sys.stdout.write("Outlet height = {0}\n".format(config['outlet_height']))
+	sys.stdout.write("Grid size     = {0} x {1}\n".format(width, height))
+    time_starts = time.time()
 
-    # Time the initialisation
-    tstart = time.time()
+    # Initialise stream function, psi, to 0.
+    psi = [[0 for col in range(width+2)] for row in range(height+2)]
 
-    # Set the dimensions of the array
-    m = edge
-    n = edge
+    # Set the boundary conditions.
+    set_inlet_boundary(psi, width, config['inlet_x'], config['inlet_width'])
+    set_outlet_boundary(psi, width, config['outlet_y'], config['outlet_height'])
 
-    # Define the psi array and set it to zero
-    psi = [[0 for col in range(m+2)] for row in range(n+2)]
-
-    # Set the boundary conditions
-    set_inlet_boundaries(psi, m, inlet_x, inlet_width)
-    set_outlet_boundaries(psi, m, outlet_y, outlet_height)
-
-    # Write the simulation details
-    tend = time.time()
+    time_ends = time.time()
     if (not quiet):
-	sys.stdout.write("\nInitialisation took {0:.5f}s\n".format(tend-tstart))
-	sys.stdout.write("\nGrid size = {0} x {1}\n".format(m, n))
+	sys.stdout.write("\nInitialisation took {0:.5f}s\n".format(time_ends-time_starts))
     
-    # Call the Jacobi iterative loop (and calculate timings)
+    # Call the Jacobi iterative loop (and calculate timings).
     if (not quiet):
 	sys.stdout.write("\nStarting main Jacobi loop...\n")
-    tstart = time.time()
-    jacobi(niter, psi)
-    tend = time.time()
+    time_starts = time.time()
+
+    jacobi(config['iterations'], psi)
+
+    time_ends = time.time()
     if (not quiet):
 	sys.stdout.write("...finished\n")
-	sys.stdout.write("\nCalculation took {0:.5f}s\n\n".format(tend-tstart))
+	sys.stdout.write("\nCalculation took {0:.5f}s\n\n".format(time_ends-time_starts))
     
-    # Write the output file
-    write_data(m, n, psi, dat_file)
+    write_data(width, height, psi, dat_file)
 
-    # Finish nicely
-    sys.exit(0)
 
-# Set the boundary conditions on top edge
-def set_inlet_boundaries(psi, m, inlet_x, inlet_width):
+def set_inlet_boundary(psi, box_width, x, width):
+    """
+    Set the boundary conditions at the inlet on the top edge of the
+    box. 
 
-    for i in range(inlet_x+1, inlet_x+inlet_width):
-        psi[0][i] = float(i-inlet_x)
-    for i in range(inlet_x+inlet_width, m+1):
-        psi[0][i] = float(inlet_width)
+    Keyword arguments:
+    psi -- 2D array of initial stream function values.
+    box_width -- width of box.
+    x -- point on top edge of box where inlet begins.
+    width -- inlet width.
+    """
 
-# Set the boundary conditions on right edge
-def set_outlet_boundaries(psi, m, outlet_y, outlet_height):
+    for i in range(x + 1, x + width):
+        psi[0][i] = float(i - x)
+    for i in range(x + width, box_width + 1):
+        psi[0][i] = float(width)
 
-    for j in range(1, outlet_y+1):
-        psi[j][m+1] = float(outlet_height)
-    for j in range(outlet_y+1, outlet_y+outlet_height):
-        psi[j][m+1] = float(outlet_height-j+outlet_y)
 
-# Create a plot of the data using matplotlib
-def write_data(m, n, psi, outfile):
+def set_outlet_boundary(psi, box_width, y, height):
+    """
+    Set the boundary conditions at the outlet on the right edge of the
+    box. 
 
-    # Open the specified file
-    out = open(outfile, "w")
-    out.write("{0} {1}\n".format(m, n))
-    # Loop over stream function matric (without boundaries)
-    for i in range(1, m+1):
-        for j in range(1, n+1):
-            # Compute velocities and magnitude squared
-            xvel = (psi[i][j+1] - psi[i][j-1])/2.0
-            yvel = (psi[i-1][j] - psi[i+1][j])/2.0
-            mvs = (xvel + yvel)**2
+    Keyword arguments:
+    psi -- 2D array of initial stream function values.
+    box_width -- width of box.
+    y -- point on right edge where outlet begins.
+    height -- outlet height.
+    """
+
+    for j in range(1, y + 1):
+        psi[j][box_width + 1] = float(height)
+    for j in range(y + 1, y + height):
+        psi[j][box_width + 1] = float(height - j + y)
+
+
+def write_data(width, height, psi, dat_file):
+    """
+    Compute flow pattern - velocity field - from stream function and
+    save. 
+
+    Keyword arguments:
+    width -- box width.
+    height -- box height.
+    psi -- 2D array of stream function values.
+    dat_file -- output file.
+    """
+
+    out = open(dat_file, "w")
+    out.write("{0} {1}\n".format(width, height))
+    # Loop over stream function, skipping boundaries.
+    for i in range(1, height + 1):
+        for j in range(1, width + 1):
+
+            x_velocity = (psi[i][j+1] - psi[i][j-1]) / 2.0
+            y_velocity = (psi[i-1][j] - psi[i+1][j]) / 2.0
+            mvs = (x_velocity + y_velocity)**2
             # Scale the magnitude
             modvsq = mvs**0.3
-            out.write("{0:5d} {1:5d} {2:10.5f} {3:10.5f} {4:10.5f}\n".format(i-1, j-1, xvel, yvel, modvsq))
+            out.write("{0:5d} {1:5d} {2:10.5f} {3:10.5f} {4:10.5f}\n".format(i-1, j-1, x_velocity, y_velocity, modvsq))
     out.close()
 
-# Function to create tidy way to have main method
 if __name__ == "__main__":
-        main(sys.argv[1:])
-
+    main(sys.argv[1:])
