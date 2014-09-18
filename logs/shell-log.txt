@@ -1,0 +1,122 @@
+  519  2014-09-16 10:35:52 ls
+  521  2014-09-16 10:37:24 cd bootcamp
+  522  2014-09-16 10:37:25 clear
+  523  2014-09-16 10:38:24 git clone https://github.com/hpcarcher/2014-09-16-imperial-students.git 
+  524  2014-09-16 10:38:31 ls
+  525  2014-09-16 10:39:19 cd 2014-09-16-imperial-students/
+  526  2014-09-16 10:39:46 pwd
+  527  2014-09-16 10:40:20 cd /
+  528  2014-09-16 10:40:22 ls
+  529  2014-09-16 10:40:59 cd ~
+  530  2014-09-16 10:41:02 pwd
+  531  2014-09-16 10:41:16 ls -a
+  532  2014-09-16 10:41:27 cd Local\ Documents/bootcamp/
+  533  2014-09-16 10:41:28 ls
+  534  2014-09-16 10:41:43 ls -a
+  535  2014-09-16 10:41:54 ls
+  536  2014-09-16 10:41:56 ls .
+  537  2014-09-16 10:42:11 ls ..
+  538  2014-09-16 10:42:22 ls
+  539  2014-09-16 10:42:26 cd 2014-09-16-imperial-students/
+  540  2014-09-16 10:42:40 ls
+  541  2014-09-16 10:44:05 ls
+  542  2014-09-16 10:47:40 ls
+  543  2014-09-16 10:47:55 ls books
+  544  2014-09-16 10:48:20 ls books/*.txt
+  545  2014-09-16 10:49:30 ls books/*.txt > txt_files.txt 
+  546  2014-09-16 10:49:42 cat txt_files.txt
+  547  2014-09-16 10:50:38 wc books/*.txt > words.txt
+  548  2014-09-16 10:50:45 cat words.txt
+  549  2014-09-16 10:51:57 ls books/*.cfg > output.txt
+  550  2014-09-16 10:52:09 cat output.txt
+  551  2014-09-16 10:53:25 ls books/*.cfg 2> output.txt
+  552  2014-09-16 10:53:31 cat output.txt
+  553  2014-09-16 10:55:38 ls books/*txt books/*.cfg > output.txt 2>&1 
+  554  2014-09-16 10:55:43 cat output.txt
+  555  2014-09-16 10:56:55 ./interactive.sh
+  556  2014-09-16 10:58:25 cat config.properties 
+  557  2014-09-16 10:59:16 ./interactive.sh < config.properties 
+  558  2014-09-16 11:01:01 FILES=$(ls books/*.txt)
+  559  2014-09-16 11:01:23 echo $FILES
+  560  2014-09-16 11:02:49 for FILE in $FILES; do echo $FILE; done 
+  561  2014-09-16 11:03:57 FILES=`ls books/*.txt`
+  562  2014-09-16 11:04:00 echo $FILES
+  563  2014-09-16 11:05:11 find . -name '*.txt' 
+  564  2014-09-16 11:05:44 find . -name '*.txt' > files.tmp
+  565  2014-09-16 11:05:52 cat files.tmp
+  566  2014-09-16 11:06:06 wc -l files.tmp
+  567  2014-09-16 11:07:40 find . -name '*.txt' | wc -l 
+  568  2014-09-16 11:08:44 ls | grep s | wc -l 
+  569  2014-09-16 11:09:14 history
+  570  2014-09-16 11:10:07 history | grep git 
+  571  2014-09-16 11:10:50 history | grep 'git status' 
+  572  2014-09-16 11:13:14 history
+  573  2014-09-16 11:13:52 echo $FILES
+  574  2014-09-16 11:14:31 wc -l files.tmp
+  586  2014-09-16 11:15:35 fc -l 500 510
+   89  2014-09-16 11:16:47 history
+   90  2014-09-16 11:17:34 cat variables.sh
+   91  2014-09-16 11:17:36 ls
+   92  2014-09-16 11:17:42 cd bootcamp/
+   93  2014-09-16 11:17:42 ls
+   94  2014-09-16 11:17:46 pwd
+   95  2014-09-16 11:17:47 cd ..
+   96  2014-09-16 11:17:47 ls
+   97  2014-09-16 11:17:49 cd 2014-09-16-imperial-students/
+   98  2014-09-16 11:17:50 ls
+   99  2014-09-16 11:17:52 cat variables.sh 
+  100  2014-09-16 11:18:42 ./variables.sh
+  101  2014-09-16 11:18:56 echo $EXAMPLE_EXE
+  102  2014-09-16 11:20:36 source variables.sh 
+  103  2014-09-16 11:20:47 echo $EXAMPLE_EXE
+  104  2014-09-16 11:21:28 ls books
+  105  2014-09-16 11:21:33 echo $?
+  106  2014-09-16 11:22:06 ls idontexist
+  107  2014-09-16 11:22:10 echo $?
+  108  2014-09-16 11:23:47 mkdir tmp
+  109  2014-09-16 11:23:51 cd tmp
+  110  2014-09-16 11:24:16 cp ../books/*.txt .
+  111  2014-09-16 11:24:19 ls
+  112  2014-09-16 11:25:40 tar -cvzf books.tar.gz *.txt 
+  113  2014-09-16 11:25:42 ls
+  114  2014-09-16 11:25:47 ls -l
+  115  2014-09-16 11:26:30 rm *.txt
+  116  2014-09-16 11:26:31 ls
+  117  2014-09-16 11:27:02 tar -xvf books.tar.gz 
+  118  2014-09-16 11:27:04 ls
+  119  2014-09-16 11:28:14 rm books.tar.gz 
+  120  2014-09-16 11:28:15 ls
+  121  2014-09-16 11:28:26 mkdir books-1.1
+  122  2014-09-16 11:28:54 mv *.txt books-1.1/
+  123  2014-09-16 11:29:23 tar -cvzf books-1.1.tar.gz books-1.1
+  124  2014-09-16 11:29:24 ls
+  125  2014-09-16 11:29:52 rm -rf books-1.1 
+  126  2014-09-16 11:29:55 ls
+  127  2014-09-16 11:30:28 tar -tvf books-1.1.tar.gz 
+  127  2014-09-16 11:30:28 tar -tvf books-1.1.tar.gz 
+  128  2014-09-16 11:31:01 tar -xvf books-1.1.tar.gz 
+  129  2014-09-16 11:31:03 ls
+  130  2014-09-16 11:31:43 ls
+  131  2014-09-16 11:31:54 ls -l books-1.1.tar.gz 
+  132  2014-09-16 11:32:15 md5sum books-1.1.tar.gz 
+  132  2014-09-16 11:32:15 md5sum books-1.1.tar.gz 
+  132  2014-09-16 11:32:15 md5sum books-1.1.tar.gz 
+  132  2014-09-16 11:32:15 md5sum books-1.1.tar.gz 
+  133  2014-09-16 11:35:31 cat wordcount.shh
+  133  2014-09-16 11:35:31 cat wordcount.shh
+  134  2014-09-16 11:35:32 cat wordcount.sh
+  135  2014-09-16 11:35:35 ls
+  136  2014-09-16 11:35:36 cd ..
+  137  2014-09-16 11:35:37 ls
+  138  2014-09-16 11:35:42 cat wordcount.sh
+  139  2014-09-16 11:35:51 ls
+  140  2014-09-16 11:36:03 cat wordcount.sh
+  140  2014-09-16 11:36:03 cat wordcount.sh
+  140  2014-09-16 11:36:03 cat wordcount.sh
+  140  2014-09-16 11:36:03 cat wordcount.sh
+  141  2014-09-16 11:37:58 ./wordcount.sh books/abyss.txt 10
+  141  2014-09-16 11:37:58 ./wordcount.sh books/abyss.txt 10
+  142  2014-09-16 11:38:39 ./wordcount.sh < books/abyss.txt 10
+  143  2014-09-16 11:39:41 ./wordcount.sh < books/bridge.txt 10
+  144  2014-09-16 11:40:06 ls books/
+  145  2014-09-16 11:40:10 ./wordcount.sh < books/war.txt 10

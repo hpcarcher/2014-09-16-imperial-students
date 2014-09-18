@@ -1,0 +1,42 @@
+  546  2014-09-17 14:01:28 ls
+  547  2014-09-17 14:01:55 python cfd.py configs/32x32.cfg 32x32.dat
+  548  2014-09-17 14:10:23 python cfd.py configs/32x32.cfg 32x32.dat quiet
+  549  2014-09-17 14:11:24 python test_cfd_endtoend.py 
+  550  2014-09-17 14:15:44 python test_cfd_endtoend.py 
+  551  2014-09-17 14:21:22 python cfd.py configs/none.cfg none.dat
+  552  2014-09-17 14:21:37 ls none.dat
+  553  2014-09-17 14:25:24 python test_cfd_endtoend.py 
+  554  2014-09-17 14:27:30 python cfd.py configs/32x32.cfg 32x32.dat
+  555  2014-09-17 14:27:36 head 32x32.dat 
+  556  2014-09-17 14:28:16 wc 32x32.dat 
+  557  2014-09-17 14:28:52 python plot_flow.py 32x32.dat 32x32.jpg
+  558  2014-09-17 14:29:46 mkdir expected
+  559  2014-09-17 14:30:08 python cfd.py configs/32x32.cfg expected/32x32.dat
+  560  2014-09-17 14:30:28 python cfd.py configs/64x64.cfg expected/64x64.dat quiet
+  561  2014-09-17 14:30:46 python cfd.py configs/96x96.cfg expected/96x96.dat quiet
+  562  2014-09-17 14:32:10 python cfd.py configs/64x64x20.cfg expected/64x64x20.dat quiet
+  564  2014-09-17 14:32:18 ls expected
+  565  2014-09-17 14:35:10 diff -q expected/32x32.dat expected/32x32.dat
+  566  2014-09-17 14:35:24 diff -q expected/32x32.dat expected/64x64.dat
+  567  2014-09-17 14:35:38 cp expected/32x32.dat .
+  568  2014-09-17 14:35:47 diff -q 32x32.dat expected/32x32.dat
+  569  2014-09-17 14:40:41 python test_cfd_endtoend.py 
+  570  2014-09-17 14:43:11 python
+  572  2014-09-17 14:49:39 python test_cfd_endtoend.py 
+  573  2014-09-17 14:57:35 python test_cfd_endtoend.py 
+  574  2014-09-17 14:58:05 python test_cfd_endtoend.py 
+  575  2014-09-17 15:01:00 python test_cfd_endtoend.py 
+  576  2014-09-17 15:02:44 head expected/32x32.dat 
+  577  2014-09-17 15:02:51 python
+  579  2014-09-17 15:07:55 ls data
+  580  2014-09-17 15:08:23 diff -q data/data2x1.dat data/data2x2.dat
+  581  2014-09-17 15:13:30 python test_cfd_numpy.py 
+  582  2014-09-17 15:16:50 python test_cfd_numpy.py 
+  583  2014-09-17 15:19:34 nosetests test_cfd_numpy.py 
+  584  2014-09-17 15:20:21 nosetests test_cfd_numpy.py 
+  585  2014-09-17 15:23:47 nosetests test_cfd_numpy.py 
+  586  2014-09-17 15:24:24 nosetests test_cfd_numpy.py 
+  587  2014-09-17 15:26:19 nosetests --with-xunit test_cfd_numpy.py 
+  588  2014-09-17 15:26:31 cat nosetests.xml 
+  589  2014-09-17 15:30:58 cat nosetests.xml 
+  590  2014-09-17 15:31:02 nosetests test_cfd_numpy.py 

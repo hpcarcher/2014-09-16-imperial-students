@@ -1,0 +1,1033 @@
+Script started on Tue Sep 16 11:46:34 2014
+bash-3.2$ pwd
+/Users/aproeme/swc/imperial/git
+bash-3.2$ git
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git --help
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git help
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git help --all
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+available git commands in '/usr/libexec/git-core'
+
+  add			    commit		      fetch-pack		ls-files		  pack-objects		    repack		      submodule
+  add--interactive	    commit-tree 	      filter-branch		ls-remote		  pack-redundant	    replace		      svn
+  am			    config		      fmt-merge-msg		ls-tree 		  pack-refs		    repo-config 	      symbolic-ref
+  annotate		    count-objects	      for-each-ref		mailinfo		  patch-id		    request-pull	      tag
+  apply 		    credential		      format-patch		mailsplit		  peek-remote		    rerere		      tar-tree
+  archimport		    credential-cache	      fsck			merge			  prune 		    reset		      unpack-file
+  archive		    credential-cache--daemon  fsck-objects		merge-base		  prune-packed		    rev-list		      unpack-objects
+  bisect		    credential-osxkeychain    gc			merge-file		  pull			    rev-parse		      update-index
+  bisect--helper	    credential-store	      get-tar-commit-id 	merge-index		  push			    revert		      update-ref
+  blame 		    cvsexportcommit	      grep			merge-octopus		  quiltimport		    rm			      update-server-info
+  branch		    cvsimport		      gui--askpass		merge-one-file		  read-tree		    send-email		      upload-archive
+  bundle		    cvsserver		      hash-object		merge-ours		  rebase		    send-pack		      upload-pack
+  cat-file		    daemon		      help			merge-recursive 	  receive-pack		    sh-i18n--envsubst	      var
+  check-attr		    describe		      http-backend		merge-resolve		  reflog		    shell		      verify-pack
+  check-ref-format	    diff		      http-fetch		merge-subtree		  relink		    shortlog		      verify-tag
+  checkout		    diff-files		      http-push 		merge-tree		  remote		    show		      web--browse
+  checkout-index	    diff-index		      imap-send 		mergetool		  remote-ext		    show-branch 	      whatchanged
+  cherry		    diff-tree		      index-pack		mktag			  remote-fd		    show-index		      write-tree
+  cherry-pick		    difftool		      init			mktree			  remote-ftp		    show-ref
+  citool		    difftool--helper	      init-db			mv			  remote-ftps		    stage
+  clean 		    fast-export 	      instaweb			name-rev		  remote-http		    stash
+  clone 		    fast-import 	      log			notes			  remote-https		    status
+  column		    fetch		      lost-found		p4			  remote-testgit	    stripspace
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git --version
+git version 1.7.12.4 (Apple Git-37)
+bash-3.2$ mkdir cookerybook
+bash-3.2$ cddcookerybook/
+bash-3.2$ git init
+Initialized empty Git repository in /Users/aproeme/swc/imperial/git/cookerybook/.git/
+bash-3.2$ ls
+bash-3.2$ ls .
+./    ../   .git/
+bash-3.2$ ls .git/
+HEAD		branches	config		description	hooks		info		objects 	refs
+bash-3.2$ ls
+bash-3.2$ git config --global user.name "Arno Proeme"
+bash-3.2$ git config --global user.email "arno.proeme@ed.ac.uk"
+bash-3.2$ ls ~/.
+./		     .DS_Store		  .Xauthority	       .bash_profile~	    .cups/		 .fontconfig/	      .ipython/ 	   .mplayer/		.subversion/
+../		     .Motorola Mobility/  .bash_history        .cache/		    .dropbox/		 .gitconfig	      .lesshst		   .rnd 		.viminfo
+.CFUserTextEncoding  .Trash/		  .bash_profile        .continuum/	    .emacs.d/		 .idlerc/	      .macports/	   .ssh/
+bash-3.2$ ls ~/.gitconfig
+[user]
+	name = Arno Proeme
+	email = arno.proeme@ed.ac.uk
+[core]
+	editor = emacs
+bash-3.2$ git config --global core.editor emacs
+cath~/.gitconfignfig --global core.editor emacs
+[user]
+	name = Arno Proeme
+	email = arno.proeme@ed.ac.uk
+[core]
+	editor = emacs
+bash-3.2$ touch soup.md
+bash-3.2$ ls
+soup.md
+bash-3.2$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	soup.md
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ git add soup.md
+bash-3.2$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   soup.md
+#
+bash-3.2$ git commit
+
+[masterm(root-commit)ccae983b]gAdded mysfirstpsouperecipemperial/git/cookerybook/.git/COMMIT_EDITMSG...Wrote /Users/aproeme/swc/imperial/git/cookerybook/.git/COMMIT_EDITMSG--(No files need saving)
+ 0 files changed
+ create mode 100644 soup.md
+bash-3.2$ git status
+# On branch master
+nothing to commit (working directory clean)
+bash-3.2$ git log
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ git log --relative-date
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	5 minutes ago
+
+    Added my first soup recipe
+bash-3.2$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git add -u
+bash-3.2$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   soup.md
+#
+bash-3.2$ git commit -m "Added some initial ingredients for my soup base"
+[master 02ac9e0] Added some initial ingredients for my soup base
+ 1 file changed, 5 insertions(+)
+bash-3.2$ git log
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ pwdir
+/Users/aproeme/swc/imperial/git/cookerybook
+bash-3.2$ mkdir images
+bash-3.2$ cd images/
+bash-3.2$ wget http://www.cookuk.co.uk/images/slow-cooker-winter-vegetable-soup/smooth-soup.jpg
+--2014-09-16 12:30:32--  http://www.cookuk.co.uk/images/slow-cooker-winter-vegetable-soup/smooth-soup.jpg
+Resolving www.cookuk.co.uk (www.cookuk.co.uk)... 94.136.40.77
+Connecting to www.cookuk.co.uk (www.cookuk.co.uk)|94.136.40.77|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 60837 (59K) [image/jpeg]
+Saving to: ‘smooth-soup.jpg’
+
+100%[==================================================================================================================================================================>] 60,837      -148KB/s	 in 0.4s
+
+2014-09-16 12:30:34 (148 KB/s) - ‘smooth-soup.jpg’ saved [60837/60837]
+
+lhhttp://www.cookuk.co.uk/images/slow-cooker-winter-vegetable-soup/smooth-soup.jpgooth-soup.jpg
+  % Total    % Received % Xferd  Average Speed	 Time	 Time	  Time	Current
+				 Dload	Upload	 Total	 Spent	  Left	Speed
+100 60837  100 60837	0     0  9144k	    0 --:--:-- --:--:-- --:--:-- 9144k
+bash-3.2$ ls
+smooth-soup.jpg
+bash-3.2$ rm smooth-soup.jpg
+curl--O2http://www.cookuk.co.uk/images/slow-cooker-winter-vegetable-soup/smooth-soup.jpg
+  % Total    % Received % Xferd  Average Speed	 Time	 Time	  Time	Current
+				 Dload	Upload	 Total	 Spent	  Left	Speed
+100 60837  100 60837	0     0   271k	    0 --:--:-- --:--:-- --:--:--  273k
+bash-3.2$ ls
+smooth-soup.jpg
+cds..3.2$ openssmooth-soup.jpg
+bash-3.2$ pwd
+/Users/aproeme/swc/imperial/git/cookerybook
+bash-3.2$ git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	images/
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ git add images
+bash-3.2$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   images/smooth-soup.jpg
+#
+bash-3.2$ git commit -m "Added soup image"
+[master 8a6144a] Added soup image
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 images/smooth-soup.jpg
+bash-3.2$ git log
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+githstatusemacs soup.md
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$soup.mdmmit -m "Added soup image to recipe"
+[master 436238c] Pasted soup image into recipe
+ 1 file changed, 2 insertions(+)
+bash-3.2$ git status
+# On branch master
+nothing to commit (working directory clean)
+bash-3.2$ open soup.md
+githstatusopen soup.md
+# On branch master
+nothing to commit (working directory clean)
+bash-3.2$ git diff soup.md
+bash-3.2$ git diff soup.md
+diff --git a/soup.md b/soup.md
+index 7c13092..ad61ccd 100644
+--- a/soup.md
++++ b/soup.md
+@@ -5,3 +5,8 @@ Ingredients:
+
+ ![My Soup Picture](images/smooth-soup.jpg "My soup")
+
++Instructions:
++*Melt butter
++*Fry onions
++*Stir
++
+bash-3.2$ git diff soup.md
+diff --git a/soup.md b/soup.md
+index 7c13092..9c9bd56 100644
+--- a/soup.md
++++ b/soup.md
+@@ -1,7 +1,12 @@
+ Ingredients:
+ *Onions
+ *Tomatoes
+-*Potatoes
++*Garlic
+
+ ![My Soup Picture](images/smooth-soup.jpg "My soup")
+
++Instructions:
++*Melt butter
++*Fry onions
++*Stir
++
+bash-3.2$ git log
+commit 436238cd9648a9b1cdf1dd4e15fbec889066539d
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:37:09 2014 +0100
+
+    Pasted soup image into recipe
+
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ git log --oneline
+436238c Pasted soup image into recipe
+8a6144a Added soup image
+02ac9e0 Added some initial ingredients for my soup base
+cae983b Added my first soup recipe
+bash-3.2$ diff 02ac9e0
+diff --git a/images/smooth-soup.jpg b/images/smooth-soup.jpg
+new file mode 100644
+index 0000000..ab94ad0
+Binary files /dev/null and b/images/smooth-soup.jpg differ
+diff --git a/soup.md b/soup.md
+index 72e80bf..9c9bd56 100644
+--- a/soup.md
++++ b/soup.md
+@@ -1,5 +1,12 @@
+ Ingredients:
+ *Onions
+ *Tomatoes
+-*Potatoes
++*Garlic
++
++![My Soup Picture](images/smooth-soup.jpg "My soup")
++
++Instructions:
++*Melt butter
++*Fry onions
++*Stir
+
+bash-3.2$ git logf
+commit 436238cd9648a9b1cdf1dd4e15fbec889066539d
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:37:09 2014 +0100
+
+    Pasted soup image into recipe
+
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ git log --oneline
+436238c Pasted soup image into recipe
+8a6144a Added soup image
+02ac9e0 Added some initial ingredients for my soup base
+cae983b Added my first soup recipe
+bash-3.2$ git diff 8a6144a 02ac9e0
+diff --git a/images/smooth-soup.jpg b/images/smooth-soup.jpg
+deleted file mode 100644
+index ab94ad0..0000000
+Binary files a/images/smooth-soup.jpg and /dev/null differ
+bash8a6144a0000000 8a6144a 02ac9e0
+diff --git a/images/smooth-soup.jpg b/images/smooth-soup.jpg
+new file mode 100644
+index 0000000..ab94ad0
+Binary files /dev/null and b/images/smooth-soup.jpg differ
+bash-3.2$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git commit -m "Addingadairy is an interestingiidea" soup.md
+[master 2ffa726] Adding dairy is an interesting idea
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+bash-3.2$ git log --oneline
+2ffa726 Adding dairy is an interesting idea
+436238c Pasted soup image into recipe
+8a6144a Added soup image
+02ac9e0 Added some initial ingredients for my soup base
+cae983b Added my first soup recipe
+bash-3.2$ git tag dairy
+bash-3.2$ git log --oneline
+2ffa726 Adding dairy is an interesting idea
+436238c Pasted soup image into recipe
+8a6144a Added soup image
+02ac9e0 Added some initial ingredients for my soup base
+cae983b Added my first soup recipe
+bash-3.2$ git log --allline
+commit 2ffa7263933996b2524aefa32c9596bdf0ae3684
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 13:50:47 2014 +0100
+
+    Adding dairy is an interesting idea
+
+commit 436238cd9648a9b1cdf1dd4e15fbec889066539d
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:37:09 2014 +0100
+
+    Pasted soup image into recipe
+
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ git log --all
+fatal: unrecognized argument: --a
+bash-3.2$ git statusa
+# On branch master
+nothing to commit (working directory clean)
+bash-3.2$ git tag
+dairy
+bash-3.2$ git commit -m "Stewing instructions" soup.md
+[master 3d74d50] Stewing instructions
+ 1 file changed, 1 insertion(+)
+logt--all git commit -m "Stewing instructions" soup.md
+commit 3d74d5048615c72a7b32fa77057676915b73cb66
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 13:52:22 2014 +0100
+
+    Stewing instructions
+
+commit 2ffa7263933996b2524aefa32c9596bdf0ae3684
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 13:50:47 2014 +0100
+
+    Adding dairy is an interesting idea
+
+commit 436238cd9648a9b1cdf1dd4e15fbec889066539d
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:37:09 2014 +0100
+
+    Pasted soup image into recipe
+
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+--decorateee-oneline---decorate
+commit 3d74d5048615c72a7b32fa77057676915b73cb66 (HEAD, master)
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 13:52:22 2014 +0100
+
+    Stewing instructions
+
+commit 2ffa7263933996b2524aefa32c9596bdf0ae3684 (tag: dairy)
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 13:50:47 2014 +0100
+
+    Adding dairy is an interesting idea
+
+commit 436238cd9648a9b1cdf1dd4e15fbec889066539d
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:37:09 2014 +0100
+
+    Pasted soup image into recipe
+
+commit 8a6144a1b082ea8d0971ed8849b361bcc529451e
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:34:41 2014 +0100
+
+    Added soup image
+
+commit 02ac9e04ffdc56620479d38764181f59bcc15b9c
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:26:34 2014 +0100
+
+    Added some initial ingredients for my soup base
+
+commit cae983b9212bd872afbb6a56d76ec2503a038eb7
+Author: Arno Proeme <arno.proeme@ed.ac.uk>
+Date:	Tue Sep 16 12:14:11 2014 +0100
+
+    Added my first soup recipe
+bash-3.2$ git log --decorate --oneline
+3d74d50 (HEAD, master) Stewing instructions
+2ffa726 (tag: dairy) Adding dairy is an interesting idea
+436238c Pasted soup image into recipe
+8a6144a Added soup image
+02ac9e0 Added some initial ingredients for my soup base
+cae983b Added my first soup recipe
+bash-3.2$ git diff dairy
+diff --git a/soup.md b/soup.md
+index 96d1516..9af463b 100644
+--- a/soup.md
++++ b/soup.md
+@@ -11,3 +11,4 @@ Instructions:
+ *Fry onions
+ *Stir
+ *Add milk
++*Stew for five minutes
+bash-3.2$ git checkout dairy
+Note: checking out 'dairy'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at 2ffa726... Adding dairy is an interesting idea
+bash-3.2$ cat soup.md
+Ingredients:
+*Onions
+*Tomatoes
+*Garlic
+*Milk
+
+![My Soup Picture](images/smooth-soup.jpg "My soup")
+
+Instructions:
+*Melt butter
+*Fry onions
+*Stir
+*Add milk
+bash-3.2$ git log --oneline --decorate --all --graph
+* 3d74d50 (master) Stewing instructions
+* 2ffa726 (HEAD, tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ alias='gittlogg--oneline --decorate --all --graph'
+bash-3.2$ prettylog
+* 3d74d50 (master) Stewing instructions
+* 2ffa726 (HEAD, tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ git branch
+* (no branch)
+  master
+bash-3.2$ git checkout -spicyilianch_name
+Switched to a new branch 'spicy'
+bash-3.2$ git branch
+  master
+* spicy
+bash-3.2$ gitccommit -m "Abbiteof chilli" soup.md
+[spicy e94b17b] A bit of chilli
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+bash-3.2$ git commit -m "A bit of chilli" soup.md
+[spicy fb82b25] More types of chilli
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+bash-3.2$ prettylog
+* fb82b25 (HEAD, spicy) More types of chilli
+* e94b17b A bit of chilli
+| * 3d74d50 (master) Stewing instructions
+|/
+* 2ffa726 (tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ 26 (tag: dairy) Adding dairy is an interesting idea
+bash: syntax error near unexpected token `tag:'
+bash-3.2$ * 436238c Pasted soup image into recipe
+bash: images: command not found
+bash-3.2$ * 8a6144a Added soup image
+bash: images: command not found
+bash-3.2$ * 02ac9e0 Added some initial ingredients for my soup base
+bash: images: command not found
+prettylogdairy)sAddingadairytisraniinterestingyideap base
+* fb82b25 (HEAD, spicy) More types of chilli
+* e94b17b A bit of chilli
+| * 3d74d50 (master) Stewing instructions
+|/
+* 2ffa726 (tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ git checkout master
+Switched to branch 'master'
+bash-3.2$ git commit -m "Ssoup.mdgies
+[master 3126488] Adde some veggies
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+bash-3.2$ git commit -m "Adde some veggies" soup.md
+[master 6e29103] Onion instructions
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+bash-3.2$ prettylog
+* 6e29103 (HEAD, master) Onion instructions
+* 3126488 Adde some veggies
+* 3d74d50 Stewing instructions
+| * fb82b25 (spicy) More types of chilli
+| * e94b17b A bit of chilli
+|/
+* 2ffa726 (tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ git help
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+githbranchgit merge
+* master
+  spicy
+bash-3.2$ git merge spicy
+Auto-merging soup.md
+CONFLICT (content): Merge conflict in soup.md
+Automatic merge failed; fix conflicts and then commit the result.
+bash-3.2$ git status
+# On branch master
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#	both modified:	    soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+githstatusgit add soup.md
+# On branch master
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#	both modified:	    soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git addtsoup.md
+bash-3.2$ git statusup.md
+# On branch master
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   soup.md
+#
+bash-3.2$ git commit -m "Resolved spicy and bland recipes" soup.md
+fatal: cannot do a partial commit during a merge.
+bash-3.2$ git commit -m "Resolved spicy and bland recipes" soup.md
+[master d6f1d1d] Resolved spicy and bland recipes
+bash-3.2$ git statuss
+# On branch master
+nothing to commit (working directory clean)
+bash-3.2$ prettylog
+*   d6f1d1d (HEAD, master) Resolved spicy and bland recipes
+|\
+| * fb82b25 (spicy) More types of chilli
+| * e94b17b A bit of chilli
+* | 6e29103 Onion instructions
+* | 3126488 Adde some veggies
+* | 3d74d50 Stewing instructions
+|/
+* 2ffa726 (tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ git branch
+* master
+  spicy
+bash-3.2$ git branch -d spicy
+Deleted branch spicy (was fb82b25).
+bash-3.2$ git branch -d spicy
+* master
+bash-3.2$ prettylogh -d spicy
+*   d6f1d1d (HEAD, master) Resolved spicy and bland recipes
+|\
+| * fb82b25 More types of chilli
+| * e94b17b A bit of chilli
+* | 6e29103 Onion instructions
+* | 3126488 Adde some veggies
+* | 3d74d50 Stewing instructions
+|/
+* 2ffa726 (tag: dairy) Adding dairy is an interesting idea
+* 436238c Pasted soup image into recipe
+* 8a6144a Added soup image
+* 02ac9e0 Added some initial ingredients for my soup base
+* cae983b Added my first soup recipe
+bash-3.2$ git remote add origin https://aproeme@bitbucket.org/aproeme/cookbook.git
+bash-3.2$ git remote
+origin
+bash-3.2$ git remote show
+origin
+bash-3.2$ git remote show origin
+Password for 'https://aproeme@bitbucket.org':
+* remote origin
+  Fetch URL: https://aproeme@bitbucket.org/aproeme/cookbook.git
+  Push	URL: https://aproeme@bitbucket.org/aproeme/cookbook.git
+  HEAD branch: (unknown)
+bash-3.2$ git push -u origin --all
+Counting objects: 34, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (29/29), done.
+Writing objects: 100% (34/34), 61.53 KiB, done.
+Total 34 (delta 7), reused 0 (delta 0)
+To https://aproeme@bitbucket.org/aproeme/cookbook.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+bash-3.2$ pwd b
+/Users/aproeme/swc/imperial/git/cookerybook
+bash-3.2$ cd ..
+bash-3.2$ rm cookerybook/
+override r--r--r--  aproeme/staff for cookerybook//.git/objects/02/ac9e04ffdc56620479d38764181f59bcc15b9c? y
+override r--r--r--  aproeme/staff for cookerybook//.git/objects/08/3ac78a6935fd2eb7350caa8fa51f440ffe5424? y
+override r--r--r--  aproeme/staff for cookerybook//.git/objects/14/32896f32c28989136b1e380bcf80639ac0d4e1? y
+override r--r--r--  aproeme/staff for cookerybook//.git/objects/27/309adfb9814702d329e288601838acd241017c? y
+override r--r--r--  aproeme/staff for cookerybook//.git/objects/2b/0fd6ff1fe36f77a011fd26de9665a3dae9dc69? ^C
+bash-3.2$ rm -r cookerybook/
+bash-3.2$ ls
+log	log.txt
+ehhttps://aproeme@bitbucket.org/aproeme/cookbook.gitaproeme/cookbook.git
+Cloning into 'cookbook'...
+remote: Counting objects: 34, done.
+remote: Compressing objects: 100% (29/29), done.
+remote:nTotale34s(delta 7),/reused 0 (delta 0)
+Unpacking objects: 100% (34/34), done.
+bash-3.2$ ls
+cookbook	log		log.txt
+bash-3.2$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	cookbook/
+#	log
+#	log.txt
+nothing added to commit but untracked files present (use "git add" to track)
+bash-3.2$ pwd
+/Users/aproeme/swc/imperial/git
+bash-3.2$ cd cookbook/
+bash-3.2$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+git.pusho-ueorigin/--alle@bitbucket.org/aproeme/cookbook.git
+Everything up-to-date
+bash-3.2$ git commit -m "Finally" soup.md
+[master 3cc5198] Finally
+ 1 file changed, 3 insertions(+)
+push-3.2$ git commit -m "Finally" soup.md
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 305 bytes, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To https://aproeme@bitbucket.org/aproeme/cookbook.git
+   d6f1d1d..3cc5198  master -> master
+bash-3.2$ lsl clone
+bash: lsl: command not found
+bash-3.2$ pwd
+/Users/aproeme/swc/imperial/git/cookbook
+bash-3.2$ lsl
+bash: lsl: command not found
+bash-3.2$ pwd
+/Users/aproeme/swc/imperial/git/cookbook
+bash-3.2$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git committ-m "Perfection" soup.md
+[master 41f9248] Perfection
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+bash-3.2$ git push
+To https://aproeme@bitbucket.org/aproeme/cookbook.git
+ ! [rejected]	     master -> master (non-fast-forward)
+error: failed to push some refs to 'https://aproeme@bitbucket.org/aproeme/cookbook.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+bash-3.2$ git help
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+	   [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+	   [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+	   [-c name=value] [--help]
+	   <command> [<args>]
+
+The most commonly used git commands are:
+   add	      Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log	      Show commit logs
+   merge      Join two or more development histories together
+   mv	      Move or rename a file, a directory, or a symlink
+   pull       Fetch from and merge with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm	      Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag	      Create, list, delete or verify a tag object signed with GPG
+
+See 'git help <command>' for more information on a specific command.
+bash-3.2$ git pull
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From https://bitbucket.org/aproeme/cookbook
+   3cc5198..2c7bfd6  master	-> origin/master
+Auto-merging soup.md
+CONFLICT (content): Merge conflict in soup.md
+Automatic merge failed; fix conflicts and then commit the result.
+bash-3.2$ git commit -m "Resolved Mike's gastronoicmmsoup.mdtions"
+fatal: cannot do a partial commit during a merge.
+bash-3.2$ git commit -m "Resolved Mike's gastronomic modifications" soup.md
+U	soup.md
+error: 'commit' is not possible because you have unmerged files.
+hint: Fix them up in the work tree,
+hint: and then use 'git add/rm <file>' as
+hint: appropriate to mark resolution and make a commit,
+hint: or use 'git commit -a'.
+fatal: Exiting because of an unresolved conflict.
+githstatusgit commit -m "Resolved Mike's gastronomic modifications"
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#	both modified:	    soup.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bash-3.2$ git addtsoup.md
+bash-3.2$ git commitu-mm"Resolved Mike's gastronomic modifications"
+[master eb8073c] Resolved Mike's gastronomic modifications
+bash-3.2$ git push
+Counting objects: 10, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 649 bytes, done.
+Total 6 (delta 2), reused 0 (delta 0)
+To https://aproeme@bitbucket.org/aproeme/cookbook.git
+   2c7bfd6..eb8073c  master -> master
+bash-3.2$

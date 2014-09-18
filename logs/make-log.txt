@@ -1,0 +1,82 @@
+  204  2014-09-16 15:55:05 start_recording
+  205  2014-09-16 15:56:12 ls
+  206  2014-09-16 15:56:15 clear
+  207  2014-09-16 16:05:41 ls
+  208  2014-09-16 16:05:48 cat configs/32x32.cfg 
+  209  2014-09-16 16:07:17 python cfd.py configs/32x32.cfg 32x32.dat
+  210  2014-09-16 16:07:52 head 32x32.dat 
+  211  2014-09-16 16:08:41 python plot_flow.py 32x32.dat 32x32.jpg
+  212  2014-09-16 16:11:00 python cfd.py configs/32x32.cfg 32x32.dat
+  213  2014-09-16 16:12:04 ls
+  214  2014-09-16 16:16:29 make
+  215  2014-09-16 16:17:20 rm 32x32.dat
+  216  2014-09-16 16:17:30 make
+  217  2014-09-16 16:17:50 make
+  218  2014-09-16 16:18:55 touch configs/32x32.cfg
+  219  2014-09-16 16:19:09 ls -l configs/32x32.cfg 32x32.dat
+  220  2014-09-16 16:19:20 make
+  221  2014-09-16 16:22:03 make 64x64.dat
+  222  2014-09-16 16:22:23 ls configs
+  223  2014-09-16 16:24:43 rm *.dat
+  224  2014-09-16 16:24:51 make all
+  226  2014-09-16 16:26:54 make clean
+  227  2014-09-16 16:27:13 make all
+  228  2014-09-16 16:28:35 make analysis.tar.gz
+  229  2014-09-16 16:28:39 ls -l analysis.tar.gz 
+  230  2014-09-16 16:35:07 make cleann
+  231  2014-09-16 16:35:08 make clean
+  232  2014-09-16 16:35:10 make all
+  233  2014-09-16 16:35:21 make analysis.tar.gz
+  234  2014-09-16 16:35:29 history | tail 3
+  235  2014-09-16 16:35:32 history | tail 
+  236  2014-09-16 16:37:45 make clean
+  237  2014-09-16 16:37:46 make all
+  238  2014-09-16 16:39:39 make analysis.tar.gz
+  239  2014-09-16 16:40:23 make analysis.tar.gz
+  240  2014-09-16 16:40:45 touch configs/32x32.cfg
+  241  2014-09-16 16:40:55 make analysis.tar.gz
+  242  2014-09-16 16:41:26 ls configs/
+  243  2014-09-16 16:42:02 rm analysis.tar.gz 
+  244  2014-09-16 16:42:06 make analysis.tar.gz 
+  246  2014-09-16 16:42:43 make clean
+  247  2014-09-16 16:42:51 make analysis.tar.gz 
+  248  2014-09-16 16:43:31 make all
+  249  2014-09-16 16:43:38 make analysis.tar.gz 
+  250  2014-09-16 16:46:35 make clean
+  251  2014-09-16 16:46:41 make 32x32.dat
+  252  2014-09-16 16:47:15 ls configs
+  253  2014-09-16 16:47:28 make 64x64x20.dat
+  254  2014-09-16 16:48:08 make 120x120.dat
+  255  2014-09-16 16:50:01 make -n analysis.tar.gz
+  256  2014-09-16 16:50:39 make -n 64x64x20.dat
+  257  2014-09-16 16:51:19 ls configs
+  258  2014-09-16 16:51:39 make all
+  259  2014-09-16 16:52:00 make all
+  260  2014-09-16 16:52:21 ls configs/
+  261  2014-09-16 16:54:54 make print
+  262  2014-09-16 16:55:12 make print
+  263  2014-09-16 16:57:53 make print
+  265  2014-09-16 16:59:29 make clean
+  266  2014-09-16 16:59:32 make all
+  267  2014-09-16 17:00:12 make analysis.tar.gz 
+  268  2014-09-16 17:00:20 make clean
+  269  2014-09-16 17:00:23 make analysis.tar.gz 
+  270  2014-09-16 17:00:47 make analysis.tar.gz 
+  271  2014-09-16 17:03:43 make clean
+  272  2014-09-16 17:03:50 make 32x32.dat 64x64.dat
+  273  2014-09-16 17:05:00 make clean
+  274  2014-09-16 17:05:01 make 
+  275  2014-09-16 17:06:49 make 32x32.dat
+  276  2014-09-16 17:06:59 touch cfd.py
+  277  2014-09-16 17:07:01 make 32x32.dat
+  278  2014-09-16 17:07:24 make analysis.tar.gz
+  279  2014-09-16 17:07:55 tar -tvf analysis.tar.gz 
+  280  2014-09-16 17:08:35 ls
+  281  2014-09-16 17:11:14 make print
+  282  2014-09-16 17:15:27 make all
+  283  2014-09-16 17:15:35 make all
+  284  2014-09-16 17:16:59 make analysis.tar.gz 
+  285  2014-09-16 17:17:07 rm analysis.tar.gz 
+  286  2014-09-16 17:17:27 make analysis.tar.gz
+  289  2014-09-16 17:24:28 find configs -type f -name '*.cfg'
+  290  2014-09-16 17:26:18 make print
